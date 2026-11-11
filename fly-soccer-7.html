@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FLY SOCCER 7.0 | PC Controls</title>
+<style>
+:root{--lime:#b7ff65;--bg:#07120d;--panel:#102319;--line:#345b42;--muted:#b7c9bc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f4fff6;font-family:Arial,sans-serif}button,select,input{font:inherit}button{border:0;border-radius:8px;padding:10px 13px;background:var(--lime);color:#10200e;font-weight:900;cursor:pointer}button.alt{background:#294535;color:#eff9f0}button:disabled{opacity:.4;cursor:not-allowed}
+header{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;background:#091810;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:4}.logo{font-size:22px;font-weight:1000;letter-spacing:2px;color:var(--lime)}.logo span{color:#fff}
+nav{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px;background:#0b1b12;position:sticky;top:60px;z-index:4;border-bottom:1px solid var(--line)}nav button{font-size:11px;padding:9px 11px}nav button.active{background:#fff;color:#10200e}
+main{max-width:1200px;margin:auto;padding:18px}.screen{display:none}.screen.active{display:block}.hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.hero{padding:24px;background:linear-gradient(115deg,#19452a,#102319 70%);margin-bottom:14px}
+h1{font-size:clamp(25px,4vw,38px);margin:0 0 8px}h2{font-size:18px;color:var(--lime);margin:0 0 12px}p{color:var(--muted);line-height:1.45;font-size:13px}.muted{font-size:11px;color:var(--muted)}.tag{font-size:10px;font-weight:bold;letter-spacing:1px;color:#d8f7d5;background:#294a32;padding:5px 8px;border-radius:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.big{font-size:29px;font-weight:1000;margin-top:5px}.stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #294234;font-size:13px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}table{border-collapse:collapse;width:100%;font-size:12px;min-width:540px}td,th{text-align:left;padding:9px 7px;border-bottom:1px solid #2b4435}th{color:var(--lime);font-size:10px}select,input{background:#091810;border:1px solid #45664f;color:white;border-radius:8px;padding:10px;max-width:100%}
+.tablewrap{overflow:auto}.notice{padding:10px;border-left:3px solid var(--lime);background:#162d1d;border-radius:5px;font-size:12px;color:#e3f3e5}
+#match{display:none;position:fixed;inset:0;background:#06110b;z-index:10}#field3d{width:100%;height:100%;display:block}#scorehud{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;gap:15px;align-items:center;background:#07170fe8;border:1px solid #72976c;border-radius:12px;padding:9px 14px;white-space:nowrap;font-weight:bold}#score{font-size:25px;color:var(--lime)}#clock{font-variant-numeric:tabular-nums}
+#matchHelp{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);padding:9px 12px;background:#07170fe8;border-radius:10px;font-size:11px;white-space:nowrap;text-align:center}#matchActions{position:absolute;right:12px;bottom:60px;display:flex;gap:7px}#matchActions button{min-width:60px}#leave{position:absolute;right:12px;top:12px}#commentary{position:absolute;top:70px;left:50%;transform:translateX(-50%);background:#06140edb;padding:8px 14px;border-radius:8px;font-weight:bold;text-align:center;max-width:90vw}
+#matchEnd{display:none;position:absolute;inset:0;background:#06110bee;place-items:center;padding:16px}#endCard{width:min(420px,95vw);padding:25px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:15px}
+#setup{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,#285536,#06110b 65%);padding:15px}#setupBox{width:min(470px,96vw);padding:24px;background:#0c1d13;border:1px solid #557b50;border-radius:16px}#setupBox h1{font-size:42px;color:var(--lime);letter-spacing:2px}#setupBox input,#setupBox select{width:100%;margin:7px 0 12px}#setupBox button{width:100%}
+#toast{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:30;font-weight:900;text-shadow:0 2px 7px #000}
+
+#setup{display:block;overflow:auto;background:#050b0c;padding:0;color:#fff}
+#mainMenu{max-width:1250px;margin:auto;padding:22px clamp(14px,4vw,48px) 18px}
+.menuTop{height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brandMark{display:flex;align-items:center;gap:12px}.brandIcon{width:42px;height:42px;display:grid;place-items:center;background:var(--lime);color:#07130c;font-size:30px;font-weight:1000;font-style:italic;clip-path:polygon(0 0,100% 0,80% 100%,0 85%)}
+.brandName{font-size:22px;letter-spacing:3px;font-weight:1000}.brandName b{color:var(--lime)}.brandMark small,.menuVersion,.modeHeading small{font-size:9px;letter-spacing:2px;color:#a8c1b1}.menuVersion{border:1px solid #496354;padding:8px 11px;border-radius:4px}
+.menuHero{height:clamp(270px,36vw,405px);margin:12px 0 22px;position:relative;overflow:hidden;border:1px solid #31513e;background:linear-gradient(90deg,#06130e 0%,#102d20 45%,#183c28 100%);isolation:isolate}
+.menuHero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 8%,#baff6a08 8.1% 8.3%),linear-gradient(0deg,#06100de8 0%,transparent 65%);z-index:-1}
+.menuHero:after{content:"";position:absolute;left:0;right:0;bottom:-48%;height:85%;background:repeating-linear-gradient(90deg,transparent 0 11%,#b5ff6530 11.1% 11.25%),repeating-linear-gradient(0deg,#ffffff08 0 2px,transparent 2px 45px);transform:perspective(300px) rotateX(48deg);border-top:2px solid #baff6570;z-index:-1}
+.stadiumGlow{position:absolute;inset:0;background:radial-gradient(ellipse at 72% 22%,#c5ff8a38,transparent 24%),radial-gradient(ellipse at 20% 5%,#baff6540,transparent 20%);pointer-events:none}
+.heroCopy{position:absolute;z-index:2;left:6%;top:17%}.eyebrow{font-size:10px;letter-spacing:4px;color:var(--lime);font-weight:900}.heroCopy h1{font-size:clamp(48px,8vw,92px);line-height:.82;letter-spacing:-4px;margin:18px 0}.heroCopy h1 em{font-style:normal;color:var(--lime)}.heroCopy p{font-size:14px;color:#d5e5d9}
+.heroPlayer{position:absolute;right:12%;bottom:0;width:230px;height:310px;filter:drop-shadow(0 10px 18px #0009);transform:scale(.95);transform-origin:bottom center}
+.playerHead{position:absolute;top:24px;left:94px;width:48px;height:54px;border-radius:45% 45% 42% 42%;background:linear-gradient(120deg,#b9794d,#573521);z-index:3}
+.playerBody{position:absolute;top:75px;left:55px;width:125px;height:130px;background:linear-gradient(110deg,#d9f1dc,#567d68 65%,#142d20);clip-path:polygon(20% 0,80% 0,100% 25%,82% 100%,18% 100%,0 25%);z-index:2}
+.playerArm{position:absolute;top:88px;width:32px;height:130px;background:linear-gradient(90deg,#a96c48,#54351f);border-radius:20px;z-index:1}.playerArm.left{left:38px;transform:rotate(19deg)}.playerArm.right{right:29px;transform:rotate(-27deg)}
+.playerLeg{position:absolute;top:184px;width:44px;height:115px;background:linear-gradient(90deg,#182a21,#050a08);border-radius:14px 14px 8px 8px;z-index:1}.playerLeg.left{left:73px;transform:rotate(9deg)}.playerLeg.right{left:119px;transform:rotate(-18deg)}
+.playerShadow{position:absolute;bottom:2px;left:48px;width:160px;height:18px;background:#0009;filter:blur(9px);border-radius:50%}
+.heroBall{position:absolute;bottom:12px;right:0;width:43px;height:43px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#111 19% 24%,#eee 25% 48%,#333 49% 55%,#fff 56%);border:2px solid #ddd;z-index:4}
+.stadiumCaption{position:absolute;right:20px;bottom:16px;font-size:9px;letter-spacing:2px;color:#d7e9dc}.stadiumCaption span{color:var(--lime)}
+.modeHeading{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.modeHeading h2{font-size:22px;letter-spacing:2px;margin:4px 0 0;color:#fff}.modeHint{font-size:9px;letter-spacing:1.5px;color:#829b8b}
+.modeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.modeCard{position:relative;min-height:130px;text-align:left;padding:15px;background:linear-gradient(145deg,#14271d,#0b1711);border:1px solid #345441;border-radius:5px;color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:5px;transition:.18s;overflow:hidden}
+.modeCard:hover{border-color:var(--lime);transform:translateY(-2px);background:#1b3827}.modeCard.featured{background:linear-gradient(120deg,#294c31,#12271b);border-color:#9bcf65}
+.modeNo{font-size:8px;letter-spacing:1.6px;color:#9cb5a3}.modeIcon{font-size:23px;color:var(--lime);margin:4px 0}.modeCard b{font-size:13px;letter-spacing:1px}.modeCard small{font-size:10px;color:#a9bdb0;font-weight:400}.modeArrow{position:absolute;right:15px;bottom:14px;color:var(--lime);font-size:20px}
+.menuFooter{display:flex;justify-content:space-between;gap:10px;padding:20px 0 4px;color:#6f8978;font-size:8px;letter-spacing:1.5px}
+#setupBox{position:fixed;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);max-height:94vh;overflow:auto;box-shadow:0 20px 100px #000}
+.backMenu{width:auto!important;margin-bottom:14px}
+@media(max-width:700px){#mainMenu{padding:12px}.menuHero{height:280px}.heroPlayer{right:-2%;transform:scale(.75);transform-origin:bottom right}.heroCopy{left:5%;top:19%}.heroCopy h1{font-size:54px}.modeGrid{grid-template-columns:repeat(2,1fr)}.modeCard{min-height:120px;padding:11px}.modeCard b{font-size:11px}.menuVersion{font-size:8px}.menuFooter{font-size:7px}.modeHint{display:none}}
+\n@media(max-width:650px){main{padding:12px}nav{gap:4px;padding:7px}nav button{font-size:9px;padding:8px}header{padding:0 12px}.logo{font-size:18px}#matchHelp{white-space:normal;width:90%;font-size:10px}#scorehud{gap:8px;font-size:11px;padding:7px 9px}}
+
+/* FLY SOCCER 7.0: desktop controls and settings */
+#settingsBtn,#menuSettingsBtn{position:fixed;top:12px;left:12px;z-index:25;min-width:104px;background:#10251a;color:#eff9f0;border:1px solid #9bcf65;box-shadow:0 3px 14px #0008}
+#menuSettingsBtn{position:absolute;top:20px;left:clamp(14px,4vw,48px)}
+#settingsModal{display:none;position:fixed;inset:0;z-index:60;background:#000b;place-items:center;padding:16px}
+#settingsPanel{width:min(560px,96vw);max-height:90vh;overflow:auto;background:#0c1d13;border:1px solid #91c66a;border-radius:14px;padding:20px;box-shadow:0 20px 80px #000}
+#settingsPanel h2{font-size:22px} .bindGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.bindRow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#14291c;border:1px solid #345b42;border-radius:8px;padding:9px;font-size:12px}
+.bindRow button{min-width:110px;background:#294535;color:white;border:1px solid #65866a}
+.settingsActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.settingsActions button{flex:1}
+#settingsStatus{min-height:18px;color:var(--lime);font-size:12px}
+#matchHelp{max-width:calc(100vw - 30px);white-space:normal}
+@media(min-width:900px){main{padding:24px 30px}.hero{padding:30px}.modeGrid{gap:14px}.modeCard{min-height:145px}}
+@media(max-width:600px){.bindGrid{grid-template-columns:1fr}#menuSettingsBtn{top:12px;left:12px}.menuTop{padding-left:120px}}
+
+</style>
+</head>
+<body>
+<header><div class="logo">FLY <span>SOCCER 7.0</span></div><div class="muted" id="cashTop">$50M</div></header>
+<nav>
+<button data-tab="home" class="active">HOME</button><button data-tab="squad">SQUAD</button><button data-tab="tactics">TACTICS</button><button data-tab="transfers">TRANSFERS</button><button data-tab="youth">YOUTH ACADEMY</button><button data-tab="tournaments">TOURNAMENTS</button><button data-tab="fixtures">FIXTURES</button><button data-tab="table">LEAGUE</button>
+</nav>
+<main>
+<section id="home" class="screen active">
+ <div class="hero"><span class="tag">MANAGER CAREER • SEASON <b id="seasonTag">1</b></span><h1 id="welcome">Your club. Your legacy.</h1><p>Build a team, develop talent, make signings and compete for trophies.</p><div class="row"><button id="playNext">PLAY NEXT MATCH</button><button id="simNext" class="alt">SIMULATE MATCH</button></div></div>
+ <div class="grid">
+  <div class="card"><div class="muted">LEAGUE POSITION</div><div class="big" id="rank">1st</div><p id="record">0W 0D 0L</p></div>
+  <div class="card"><div class="muted">TRANSFER BUDGET</div><div class="big" id="budget">$50M</div><p>Available funds</p></div>
+  <div class="card"><div class="muted">BOARD TARGET</div><div class="big">Top 4</div><p id="board">The board expects progress.</p></div>
+  <div class="card"><div class="muted">NEXT FIXTURE</div><div class="big" id="nextFixture">vs Northbridge</div><p id="nextMatchday">League • Matchday 1</p></div>
+ </div>
+ <div class="card" style="margin-top:12px"><h2>Manager inbox</h2><div id="inbox" class="notice">Welcome to the club. Build a squad worthy of the badge.</div></div>
+</section>
+<section id="squad" class="screen"><h1>First team & contracts</h1><p>Pick your captain, review player contracts and make substitutions during matches.</p><div class="card tablewrap" id="squadTable"></div></section>
+<section id="tactics" class="screen"><h1>Team tactics</h1><p>Set your system before kick-off.</p><div class="grid">
+ <div class="card"><h2>Formation</h2><select id="formation"><option>4-3-3</option><option>4-2-3-1</option><option>4-4-2</option><option>3-5-2</option><option>5-3-2</option></select></div>
+ <div class="card"><h2>Build-up</h2><select id="build"><option>Balanced</option><option>Possession</option><option>Fast Build Up</option><option>Long Ball</option></select></div>
+ <div class="card"><h2>Defence</h2><select id="defence"><option>Balanced</option><option>High Press</option><option>Drop Back</option><option>Press After Loss</option></select></div>
+ <div class="card"><h2>Mentality</h2><select id="mentality"><option>Balanced</option><option>Attacking</option><option>Defensive</option></select></div>
+ </div><button id="saveTactics" style="margin-top:12px">SAVE TACTICS</button>
+</section>
+<section id="transfers" class="screen"><h1>Transfer centre</h1><p>Sign fictional players to improve your squad. Keep an eye on your budget.</p><div class="card tablewrap"><div class="stat"><b>Available budget</b><b id="transferCash">$50M</b></div><table><thead><tr><th>Player</th><th>Pos</th><th>Age</th><th>OVR</th><th>Fee</th><th>Contract</th><th>Negotiation</th></tr></thead><tbody id="market"></tbody></table></div></section>
+<section id="youth" class="screen"><h1>Youth academy</h1><p>Scout prospects, develop young players and promote them to the first team.</p><div class="grid"><div class="card"><h2>Academy level</h2><div class="big" id="academyLevel">1</div><p>Higher levels improve prospect quality.</p><button id="upgradeAcademy">UPGRADE — $8M</button></div><div class="card"><h2>Scouting</h2><div class="big" id="scoutStatus">Ready</div><p>Generate a new youth prospect for your academy.</p><button id="scout">SCOUT PROSPECT — $1M</button></div></div><div class="card" style="margin-top:12px"><h2>Academy prospects</h2><div class="tablewrap"><table><thead><tr><th>Player</th><th>Age</th><th>Pos</th><th>OVR</th><th>Potential</th><th></th></tr></thead><tbody id="prospects"></tbody></table></div></div></section>
+<section id="tournaments" class="screen"><h1>Continental cup</h1><p>A fictional Champions League-style knockout competition. Win each round to lift the trophy.</p><div class="hero"><span class="tag">KNOCKOUT TOURNAMENT</span><h2 id="cupRound" style="margin-top:12px">Round of 8</h2><div class="big" id="cupOpponent">vs Royal Madrid</div><p id="cupStatus">Your continental campaign is waiting.</p><button id="cupPlay">PLAY CUP MATCH</button></div><div class="card"><h2>Road to the final</h2><div id="cupPath"></div></div></section>
+<section id="fixtures" class="screen"><h1>League fixtures</h1><div class="card tablewrap"><table><thead><tr><th>MD</th><th>Fixture</th><th>Result</th><th></th></tr></thead><tbody id="fixtureRows"></tbody></table></div></section>
+<section id="table" class="screen"><h1>League table</h1><div class="card tablewrap"><table><thead><tr><th>#</th><th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr></thead><tbody id="leagueRows"></tbody></table></div></section>
+</main>
+<div id="toast"></div>
+<div id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+ <div id="settingsPanel">
+  <div class="row" style="align-items:center"><h2 id="settingsTitle">⚙ GAME SETTINGS</h2><button id="closeSettings" class="alt" style="flex:0 0 auto">✕</button></div>
+  <p>Change your keyboard controls. Select a key, then press the replacement key.</p>
+  <div class="bindGrid" id="bindGrid"></div>
+  <div class="settingsActions">
+   <button id="resetBinds" class="alt">RESET DEFAULTS</button>
+   <button id="fullscreenBtn">FULLSCREEN</button>
+  </div>
+  <p id="settingsStatus">Keyboard controls are saved on this computer.</p>
+ </div>
+</div>
+
+<div id="match">
+ <canvas id="field3d" tabindex="0" aria-label="Soccer match field"></canvas><button id="settingsBtn" class="alt">⚙ SETTINGS</button>
+ <div id="scorehud"><span id="homeName">FLY FC</span><span id="score">0 - 0</span><span id="awayName">RIVALS</span><span id="clock">00:00</span></div>
+ <button id="leave" class="alt">EXIT</button><div id="commentary">Kick-off!</div>
+ <div id="matchHelp">WASD MOVE • SHIFT SPRINT • SPACE SHOOT • E PASS • Q SWITCH • C SUBSTITUTE • CHANGE KEYS IN SETTINGS</div>
+ <div id="matchActions"><button class="alt" id="pass">PASS</button><button id="shoot">SHOOT</button><button class="alt" id="sub">SUB</button></div>
+ <div id="matchEnd"><div id="endCard"><h1 id="endTitle" style="color:var(--lime)">FULL TIME</h1><div id="endScore" style="font-size:48px;font-weight:1000">0 - 0</div><p id="endText"></p><button id="endContinue">CONTINUE</button></div></div>
+</div>
+<div id="setup">
+ <div id="mainMenu">
+  <button id="menuSettingsBtn" class="alt">⚙ SETTINGS</button><div class="menuTop"><div class="brandMark"><span class="brandIcon">F</span><div><div class="brandName">FLY <b>SOCCER</b></div><small>THE NEXT GENERATION OF FOOTBALL</small></div></div><div class="menuVersion">SEASON MODE • 2026</div></div>
+  <div class="menuHero">
+   <div class="stadiumGlow"></div><div class="heroCopy"><div class="eyebrow">YOUR CLUB. YOUR RULES.</div><h1>OWN<br><em>THE GAME.</em></h1><p>Build your legacy under the lights.</p></div>
+   <div class="heroPlayer" aria-hidden="true"><div class="playerShadow"></div><div class="playerHead"></div><div class="playerBody"></div><div class="playerArm left"></div><div class="playerArm right"></div><div class="playerLeg left"></div><div class="playerLeg right"></div><div class="heroBall"></div></div>
+   <div class="stadiumCaption">FLY ARENA <span>•</span> LIGHTS ON. GAME ON.</div>
+  </div>
+  <div class="modeHeading"><div><small>CHOOSE YOUR EXPERIENCE</small><h2>GAME MODES</h2></div><div class="modeHint">SELECT A MODE TO PLAY</div></div>
+  <div class="modeGrid">
+   <button class="modeCard featured" data-mode="career"><span class="modeNo">01 / FEATURED</span><span class="modeIcon">♜</span><b>MANAGER CAREER</b><small>Build a club. Make history.</small><span class="modeArrow">↗</span></button>
+   <button class="modeCard" data-mode="kickoff"><span class="modeNo">02</span><span class="modeIcon">⚽</span><b>KICK OFF</b><small>Jump straight into a match.</small><span class="modeArrow">↗</span></button>
+   <button class="modeCard" data-mode="cup"><span class="modeNo">03</span><span class="modeIcon">🏆</span><b>FLY CHAMPIONS CUP</b><small>Fight your way to the final.</small><span class="modeArrow">↗</span></button>
+   <button class="modeCard" data-mode="squad"><span class="modeNo">04</span><span class="modeIcon">♟</span><b>SQUAD HUB</b><small>Shape your starting eleven.</small><span class="modeArrow">↗</span></button>
+   <button class="modeCard" data-mode="transfers"><span class="modeNo">05</span><span class="modeIcon">⇄</span><b>TRANSFER MARKET</b><small>Find your next superstar.</small><span class="modeArrow">↗</span></button>
+   <button class="modeCard" data-mode="training"><span class="modeNo">06</span><span class="modeIcon">◎</span><b>TACTICS LAB</b><small>Set your formation and style.</small><span class="modeArrow">↗</span></button>
+  </div>
+  <div class="menuFooter"><span>FLY SOCCER 7.0</span><span>MADE FOR THE LOVE OF THE GAME</span><span>© FLY STUDIOS</span></div>
+ </div>
+ <div id="setupBox" style="display:none"><button id="backMenu" class="alt backMenu">← BACK TO MODES</button><div class="logo">FLY SOCCER</div><h1>THE GAME<br>IS YOURS.</h1><p>Take charge as manager. Build your club and chase every trophy.</p><label>Club name</label><input id="clubInput" maxlength="18" value="Fly FC"><label>Difficulty</label><select id="difficulty"><option value="normal">Professional</option><option value="easy">Semi-Pro</option><option value="hard">World Class</option></select><button id="begin">START MANAGER CAREER</button><p class="muted">FLY SOCCER 7.0 • New main menu and expanded mode hub.</p></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script>
+(()=>{
+'use strict';const $=id=>document.getElementById(id),names=['Ethan Cole','Noah Bennett','Leo Silva','Mateo Reed','Jayden Cruz','Luca Morgan','Mason Hayes','Amir Brooks','Theo Costa','Rafael Ward','Kai Foster','Oscar Diaz','Dylan Parker','Hugo James','Zane Rossi','Milan Price','Aiden Bell','Nico Stone'];
+const clubs=['Northbridge','Kingsport','Redmont','Westhaven','Lakewood','Eastford','Stone Athletic'];
+const positions=['GK','RB','CB','CB','LB','CDM','CM','CM','RW','ST','LW','CB','CM','ST','RW','LB','GK','CDM'];
+const $rand=(a)=>a[Math.floor(Math.random()*a.length)];
+function player(i,prospect=false){let o=prospect?55+Math.floor(Math.random()*15):[79,75,77,76,74,78,80,77,79,82,78][i%11];return{id:'p'+Date.now()+Math.random(),name:names[i%names.length],pos:positions[i%positions.length],age:prospect?15+Math.floor(Math.random()*3):20+(i*3)%12,ovr:o,potential:prospect?o+Math.floor(Math.random()*25)+4:o+Math.floor(Math.random()*8),value:Math.max(1,Math.round((o-59)*.75+4)),contract:prospect?3:2+Math.floor(Math.random()*3),captain:false}}
+let S={club:'Fly FC',difficulty:'normal',season:1,budget:50,played:0,wins:0,draws:0,losses:0,goals:0,points:0,formation:'4-3-3',build:'Balanced',defence:'Balanced',mentality:'Balanced',squad:[],market:[],prospects:[],academy:1,fixtures:[],cup:{round:0,wins:0,done:false}};
+function fixtures(){S.fixtures=Array.from({length:14},(_,i)=>({opp:clubs[(i+S.season-1)%7],home:i%2===0,done:false,score:''}))}
+function market(){S.market=Array.from({length:12},(_,i)=>{let p=player(i+11);p.id='m'+S.season+i;p.name=names[(i*3+5)%names.length];p.pos=positions[(i+4)%positions.length];p.ovr=67+(i*7+S.season*3)%19;p.value=Math.round((p.ovr-60)*.9+4);p.age=18+(i*5)%14;return p})}
+function persist(){try{localStorage.setItem('flySoccerCareer3',JSON.stringify(S))}catch{};render()}
+function load(){try{let x=JSON.parse(localStorage.getItem('flySoccerCareer3'));if(x&&x.squad?.length)S=x}catch{}if(!S.squad.length)S.squad=Array.from({length:16},(_,i)=>player(i));if(!S.fixtures.length)fixtures();if(!S.market.length)market()}
+function toast(t){$('toast').textContent=t;clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').textContent='',1800)}
+function tab(id){document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));render()}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+function render(){let pos=1+Math.max(0,7-Math.floor(S.points/4));$('welcome').textContent='Welcome, '+S.club+' manager.';$('seasonTag').textContent=S.season;$('rank').textContent=pos+(['th','st','nd','rd'][pos]||'th');$('record').textContent=`${S.wins}W ${S.draws}D ${S.losses}L`;$('budget').textContent='$'+S.budget.toFixed(1)+'M';$('cashTop').textContent='$'+S.budget.toFixed(1)+'M';$('transferCash').textContent='$'+S.budget.toFixed(1)+'M';$('board').textContent=S.points>=12?'The board is pleased.':'The board expects better results.';let ni=S.fixtures.findIndex(f=>!f.done);$('nextFixture').textContent=ni<0?'Season complete':(S.fixtures[ni].home?'vs ':'@ ')+S.fixtures[ni].opp;$('nextMatchday').textContent=ni<0?'Start a new season':'League • Matchday '+(ni+1);
+ $('squadTable').innerHTML='<table><thead><tr><th>Player</th><th>Pos</th><th>Age</th><th>OVR</th><th>Contract</th><th>Captain</th></tr></thead><tbody>'+S.squad.map(p=>`<tr><td>${p.name}</td><td>${p.pos}</td><td>${p.age}</td><td>${p.ovr}</td><td>${p.contract} yr</td><td><button class="alt cap" data-id="${p.id}">${p.captain?'CAPTAIN':'SET CAPTAIN'}</button></td></tr>`).join('')+'</tbody></table>';
+ document.querySelectorAll('.cap').forEach(b=>b.onclick=()=>{S.squad.forEach(p=>p.captain=p.id===b.dataset.id);persist();toast('CAPTAIN APPOINTED')});
+ $('market').innerHTML=S.market.map(p=>`<tr><td>${p.name}</td><td>${p.pos}</td><td>${p.age}</td><td>${p.ovr}</td><td>$${p.value}M</td><td>${p.contract} yr</td><td><button class="buy" data-id="${p.id}" ${S.budget<p.value||S.squad.length>=25?'disabled':''}>SIGN</button> <button class="negotiate alt" data-id="${p.id}" ${S.squad.length>=25?'disabled':''}>NEGOTIATE</button></td></tr>`).join('');
+ document.querySelectorAll('.buy').forEach(b=>b.onclick=()=>{let i=S.market.findIndex(p=>p.id===b.dataset.id),p=S.market[i];if(!p||S.budget<p.value)return;S.budget-=p.value;S.squad.push({...p,id:'p'+Date.now()});S.market.splice(i,1);persist();toast('SIGNED: '+p.name)});
+ document.querySelectorAll('.negotiate').forEach(b=>b.onclick=()=>{let i=S.market.findIndex(p=>p.id===b.dataset.id),p=S.market[i];if(!p)return;let offer=Number(prompt('Your transfer offer for '+p.name+' (asking price: $'+p.value+'M). Enter offer in millions:',''+Math.max(1,p.value-2)));if(!Number.isFinite(offer)||offer<=0)return;if(offer>S.budget){toast('OFFER EXCEEDS YOUR BUDGET');return}let accepted=offer>=p.value*.92;if(accepted){S.budget-=offer;S.squad.push({...p,id:'p'+Date.now(),value:offer});S.market.splice(i,1);persist();toast('DEAL AGREED! '+p.name+' JOINS '+S.club)}else{let counter=Math.ceil(p.value*.92*10)/10;toast('CLUB REJECTED — COUNTER-OFFER: $'+counter+'M');if(confirm(p.name+'\'s club countered at $'+counter+'M. Accept?')&&S.budget>=counter){S.budget-=counter;S.squad.push({...p,id:'p'+Date.now(),value:counter});S.market.splice(i,1);persist();toast('TRANSFER COMPLETED')}}});
+
+ $('academyLevel').textContent=S.academy;$('scoutStatus').textContent=S.prospects.length+' prospects';$('prospects').innerHTML=S.prospects.map(p=>`<tr><td>${p.name}</td><td>${p.age}</td><td>${p.pos}</td><td>${p.ovr}</td><td>${p.potential}</td><td><button class="promote" data-id="${p.id}">PROMOTE</button></td></tr>`).join('')||'<tr><td colspan="6">No prospects yet. Send your scouts.</td></tr>';
+ document.querySelectorAll('.promote').forEach(b=>b.onclick=()=>{let i=S.prospects.findIndex(p=>p.id===b.dataset.id);if(i<0||S.squad.length>=25)return;let p=S.prospects.splice(i,1)[0];p.contract=3;S.squad.push(p);persist();toast(p.name+' PROMOTED')});
+ $('fixtureRows').innerHTML=S.fixtures.map((f,i)=>`<tr><td>${i+1}</td><td>${f.home?S.club+' vs '+f.opp:f.opp+' vs '+S.club}</td><td>${f.done?f.score:'—'}</td><td>${f.done?'PLAYED':`<button class="fplay" data-i="${i}">PLAY</button> <button class="fsim alt" data-i="${i}">SIM</button>`}</td></tr>`).join('');
+ document.querySelectorAll('.fplay').forEach(b=>b.onclick=()=>startMatch(+b.dataset.i));document.querySelectorAll('.fsim').forEach(b=>b.onclick=()=>simulate(+b.dataset.i));
+ let rows=[{n:S.club,p:S.played,w:S.wins,d:S.draws,l:S.losses,gd:S.goals-S.played,pts:S.points}];clubs.forEach((n,i)=>{let w=9-i+Math.floor(S.season/3),d=2+i%3,l=14-w-d;rows.push({n,p:14,w,d,l,gd:w*2-l,pts:w*3+d})});rows.sort((a,b)=>b.pts-a.pts);$('leagueRows').innerHTML=rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.n===S.club?'★ ':''}${r.n}</td><td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gd}</td><td>${r.pts}</td></tr>`).join('');
+ $('cupRound').textContent=['Quarter-final','Semi-final','Final','Champion'][Math.min(3,S.cup.round)];$('cupOpponent').textContent=S.cup.done?'TROPHY WON': 'vs '+['Royal Madrid','Paris Royale','Milan Red',''][S.cup.round];$('cupStatus').textContent=S.cup.done?'Your club are continental champions!':S.cup.wins+' wins in this cup campaign.';$('cupPlay').disabled=S.cup.done;$('cupPath').textContent=S.cup.wins+' / 3 knockout rounds completed.';
+}
+$('saveTactics').onclick=()=>{S.formation=$('formation').value;S.build=$('build').value;S.defence=$('defence').value;S.mentality=$('mentality').value;persist();toast('TACTICS SAVED')};
+$('formation').onchange=e=>S.formation=e.target.value;$('build').onchange=e=>S.build=e.target.value;$('defence').onchange=e=>S.defence=e.target.value;$('mentality').onchange=e=>S.mentality=e.target.value;
+$('upgradeAcademy').onclick=()=>{if(S.budget<8){toast('NOT ENOUGH FUNDS');return}S.budget-=8;S.academy++;persist();toast('ACADEMY UPGRADED')};
+$('scout').onclick=()=>{if(S.budget<1){toast('NOT ENOUGH FUNDS');return}S.budget--;let p=player(Math.floor(Math.random()*names.length),true);p.ovr+=S.academy*2;p.potential=Math.min(94,p.ovr+10+S.academy*2);S.prospects.push(p);persist();toast('NEW PROSPECT FOUND')};
+function simulate(i){let f=S.fixtures[i];if(!f||f.done)return;let avg=S.squad.reduce((a,p)=>a+p.ovr,0)/S.squad.length;let h=Math.max(0,Math.round(Math.random()*2+(avg-74)/12+(S.mentality==='Attacking'?.3:0))),a=Math.max(0,Math.round(Math.random()*2+(S.difficulty==='hard'?.7:0)));if(!f.home)[h,a]=[a,h];record(i,h,a);toast('FULL TIME '+f.score)}
+function record(i,h,a){let f=S.fixtures[i];if(!f||f.done)return;f.done=true;f.score=f.home?`${h}-${a}`:`${a}-${h}`;if(h>a){S.wins++;S.points+=3;S.budget+=3}else if(h===a){S.draws++;S.points++;S.budget+=1}else S.losses++;S.played++;S.goals+=h;S.squad.forEach(p=>{if(p.contract>0)p.contract--});persist()}
+function nextMatch(){let i=S.fixtures.findIndex(f=>!f.done);if(i<0){toast('SEASON COMPLETE');return}startMatch(i)}
+$('playNext').onclick=nextMatch;$('simNext').onclick=()=>{let i=S.fixtures.findIndex(f=>!f.done);if(i>=0)simulate(i)};
+$('cupPlay').onclick=()=>{if(S.cup.done)return;let result=Math.random()<.57+(S.squad.reduce((a,p)=>a+p.ovr,0)/S.squad.length-75)*.012;if(result){S.cup.wins++;S.cup.round++;if(S.cup.round>=3)S.cup.done=true;S.budget+=5;toast(S.cup.done?'YOU WON THE CONTINENTAL CUP!':'CUP TIE WON!')}else{S.cup={round:0,wins:0,done:false};toast('ELIMINATED — TRY NEXT SEASON')}persist()};
+$('begin').onclick=()=>{S.club=$('clubInput').value.trim()||'Fly FC';S.difficulty=$('difficulty').value;fixtures();market();persist();$('setup').style.display='none'};
+let G=null,keys={},last=0;
+function startMatch(i){if(!window.THREE){toast('3D engine did not load. Check the school network.');return}let f=S.fixtures[i];if(!f||f.done)return;let sc=$('field3d');$('match').style.display='block';$('matchEnd').style.display='none';let renderer=new THREE.WebGLRenderer({canvas:sc,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;sc.focus();
+ let scene=new THREE.Scene();scene.background=new THREE.Color(0x83b7d1);scene.fog=new THREE.Fog(0x83b7d1,65,125);let camera=new THREE.PerspectiveCamera(48,innerWidth/innerHeight,.1,200);camera.position.set(-4,27,37);camera.lookAt(0,0,0);
+ scene.add(new THREE.HemisphereLight(0xffffff,0x37533d,2));let sun=new THREE.DirectionalLight(0xffffff,2.3);sun.position.set(-15,30,18);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);scene.add(sun);
+ const material=(color)=>new THREE.MeshStandardMaterial({color,roughness:.7});
+ let green=material(0x287d3e),stripe=material(0x24743a),white=material(0xffffff),homeMat=material(0x197be0),awayMat=material(0xe64c48),skin=material(0xe5b18e),dark=material(0x202a32);
+ let field=new THREE.Mesh(new THREE.PlaneGeometry(64,42),green);field.rotation.x=-Math.PI/2;field.receiveShadow=true;scene.add(field);
+ for(let i=0;i<10;i++){let m=new THREE.Mesh(new THREE.PlaneGeometry(6.4,42),i%2?green:stripe);m.rotation.x=-Math.PI/2;m.position.set(-28.8+i*6.4,.012,0);scene.add(m)}
+ function pitchLine(x,z,w,h){let m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),white);m.rotation.x=-Math.PI/2;m.position.set(x,.025,z);scene.add(m)}
+ pitchLine(0,0,.13,42);pitchLine(0,-20.9,64,.13);pitchLine(0,20.9,64,.13);pitchLine(-31.9,0,.13,42);pitchLine(31.9,0,.13,42);
+ let circle=new THREE.Mesh(new THREE.RingGeometry(5.8,5.95,64),white);circle.rotation.x=-Math.PI/2;circle.position.y=.03;scene.add(circle);
+ for(let side of [-1,1]){let box=new THREE.Mesh(new THREE.PlaneGeometry(16,22),new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true}));box.rotation.x=-Math.PI/2;box.position.set(side*24,.03,0);scene.add(box)}
+ // Stadium bowl, stands and floodlights
+ for(let side of [-1,1]){let stand=new THREE.Mesh(new THREE.BoxGeometry(70,6,7),material(0x435866));stand.position.set(0,3,side*26);scene.add(stand);for(let i=0;i<34;i++){let seat=new THREE.Mesh(new THREE.BoxGeometry(1.6,.45,.8),material(i%3===0?0xd8e5e8:0x2467a0));seat.position.set(-32+i*1.95,6.1,side*26);scene.add(seat)}}
+ for(let x of [-34,34])for(let z of [-25,25]){let pole=new THREE.Mesh(new THREE.CylinderGeometry(.18,.25,17,8),dark);pole.position.set(x,8.5,z);scene.add(pole);let lamp=new THREE.PointLight(0xffffff,45,40);lamp.position.set(x,17,z);scene.add(lamp)}
+ // Goal frames and net panels
+ for(let x of [-31.5,31.5]){let frame=new THREE.Group();for(let z of [-3.5,3.5]){let post=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,2.7,8),white);post.position.set(0,1.35,z);frame.add(post)}let bar=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,7,8),white);bar.rotation.x=Math.PI/2;bar.position.y=2.7;frame.add(bar);frame.position.x=x;scene.add(frame)}
+ // Detailed stylized 3D footballers: shaped faces, facial features, layered kits and boots.
+ const skinTones=[0xe7b98e,0xc98c63,0x9b6246,0xf0c9a5,0x70432f,0xd9a078];
+ const hairColors=[0x171311,0x39251b,0x6a452b,0x211c18,0x9b784d];
+ function makeFootballer(team,x,z,n){
+  let group=new THREE.Group(),shirt=team==='home'?homeMat:awayMat;
+  const mat=(c,rough=.82)=>new THREE.MeshStandardMaterial({color:c,roughness:rough});
+  const tone=mat(skinTones[(n*3+(team==='away'?2:0))%skinTones.length]);
+  const hairMat=mat(hairColors[(n*2+(team==='away'?1:0))%hairColors.length]);
+  const shorts=mat(team==='home'?0x101c2b:0x25252a),boots=mat(0x111316,.55),trim=mat(team==='home'?0xc7edff:0xffd7b5);
+  const add=(geo,material,pos,rot)=>{let m=new THREE.Mesh(geo,material);m.position.set(...pos);if(rot)m.rotation.set(...rot);m.castShadow=true;m.receiveShadow=true;group.add(m);return m};
+  // Core body, neck, shoulders and jersey silhouette.
+  add(new THREE.CapsuleGeometry(.43,.72,5,12),shirt,[0,1.48,0]);
+  add(new THREE.SphereGeometry(.43,16,12),shirt,[0,1.83,0]);
+  add(new THREE.CylinderGeometry(.13,.15,.22,12),tone,[0,2.08,0]);
+  // Jersey collar and central shirt detail.
+  add(new THREE.TorusGeometry(.17,.035,8,20),trim,[0,1.98,.02],[Math.PI/2,0,0]);
+  add(new THREE.BoxGeometry(.055,.75,.018),trim,[0,1.48,.424]);
+  // Shorts and hips.
+  add(new THREE.BoxGeometry(.68,.28,.38),shorts,[0,.91,0]);
+  for(let side of [-1,1])add(new THREE.CapsuleGeometry(.17,.2,4,8),shorts,[side*.2,.79,0]);
+  // Head with jaw, ears, nose, eyes, brows and mouth facing the camera.
+  add(new THREE.SphereGeometry(.285,24,18),tone,[0,2.43,.015]);
+  add(new THREE.SphereGeometry(.205,20,14),tone,[0,2.32,.035]);
+  for(let side of [-1,1]){
+   add(new THREE.SphereGeometry(.075,12,10),tone,[side*.285,2.43,0]);
+   add(new THREE.SphereGeometry(.047,12,10),mat(0x4b2d20),[side*.292,2.43,.035]);
+   add(new THREE.SphereGeometry(.043,12,10),mat(0xf7f3e8),[side*.105,2.48,.252]);
+   add(new THREE.SphereGeometry(.024,12,10),mat(0x24201d),[side*.105,2.48,.291]);
+   add(new THREE.SphereGeometry(.011,8,8),mat(0xffffff),[side*.096,2.492,.309]);
+   add(new THREE.CapsuleGeometry(.025,.09,3,8),hairMat,[side*.105,2.555,.245],[0,0,side*.12]);
+  }
+  add(new THREE.ConeGeometry(.055,.13,8),tone,[0,2.405,.29],[Math.PI/2,0,0]);
+  add(new THREE.CapsuleGeometry(.018,.105,3,8),mat(0x713d35),[0,2.315,.238],[Math.PI/2,0,0]);
+  // Hair cap plus a different fringe shape for each squad number.
+  add(new THREE.SphereGeometry(.294,20,12,0,Math.PI*2,0,Math.PI*.48),hairMat,[0,2.53,0]);
+  if(n%3===0)add(new THREE.BoxGeometry(.28,.07,.16),hairMat,[0,2.55,.19]);
+  if(n%3===1)add(new THREE.SphereGeometry(.12,12,8),hairMat,[0,2.69,-.02]);
+  // Arms: upper arm, forearm and hands; sleeves use the team shirt colour.
+  let legs=[],arms=[];
+  for(let side of [-1,1]){
+   let upper=add(new THREE.CapsuleGeometry(.115,.34,4,8),shirt,[side*.49,1.58,0],[0,0,side*.16]);
+   arms.push(upper);
+   add(new THREE.CapsuleGeometry(.085,.32,4,8),tone,[side*.57,1.25,.015],[0,0,side*.1]);
+   add(new THREE.SphereGeometry(.09,12,10),tone,[side*.6,1.04,.025]);
+   // Legs, socks and boots are separate pieces for a more athletic silhouette.
+   let thigh=add(new THREE.CapsuleGeometry(.145,.36,4,10),shorts,[side*.19,.53,0]);
+   let shin=add(new THREE.CapsuleGeometry(.105,.36,4,10),tone,[side*.19,.25,.015]);
+   let sock=add(new THREE.CylinderGeometry(.105,.12,.34,12),trim,[side*.19,.18,.02]);
+   let boot=add(new THREE.BoxGeometry(.17,.12,.31),boots,[side*.19,.055,.12]);
+   add(new THREE.BoxGeometry(.175,.025,.27),mat(0xd9dfe0),[side*.19,.012,.13]);
+   legs.push(thigh);
+  }
+  // Small number panel and shoulder stripes.
+  add(new THREE.BoxGeometry(.18,.22,.025),trim,[.18,1.47,.43]);
+  for(let side of [-1,1])add(new THREE.BoxGeometry(.045,.46,.035),trim,[side*.34,1.58,.33]);
+  group.position.set(x,0,z);scene.add(group);
+  return{mesh:group,team,n,x,z,legs,arms,walkPhase:Math.random()*6.28,lastX:x,lastZ:z};
+ }
+ let players=[];let homeSide=f.home?-1:1;let formation=S.formation;let homePositions=formation==='4-4-2'?[[-26,0],[-19,-13],[-19,-4],[-19,4],[-19,13],[-7,-14],[-7,-5],[-7,5],[-7,14],[12,-6],[12,6]]:[[-27,0],[-19,-14],[-20,-5],[-20,5],[-19,14],[-6,-10],[-8,0],[-6,10],[9,-13],[13,0],[9,13]];
+ for(let team of ['home','away'])for(let n=0;n<11;n++){let base=homePositions[n]||[-10+n*2,0],sign=(team==='home'?homeSide:-homeSide);let pl=makeFootballer(team,base[0]*sign,base[1],n);players.push(pl)}
+ // Dedicated goalkeepers guard each goal.
+ let keepers=[];for(let team of ['home','away']){let sign=(team==='home'?homeSide:-homeSide),keeper=makeFootballer(team,sign*29,0,99);keeper.mesh.scale.setScalar(1.08);keepers.push(keeper);players.push(keeper)}
+
+ let ball=new THREE.Mesh(new THREE.SphereGeometry(.38,20,16),white);ball.position.set(-5,.4,0);ball.castShadow=true;scene.add(ball);let shadow=new THREE.Mesh(new THREE.CircleGeometry(.32,16),new THREE.MeshBasicMaterial({color:0x07110a,transparent:true,opacity:.45}));shadow.rotation.x=-Math.PI/2;shadow.position.y=.035;scene.add(shadow);
+ let homePlayers=players.filter(p=>p.team==='home');G={renderer,scene,camera,players,homePlayers,keepers,selected:0,ball,shadow,vel:new THREE.Vector3(),clock:0,hs:0,as:0,fixture:i,homeName:f.home?S.club:f.opp,awayName:f.home?f.opp:S.club,done:false,subs:0,subList:S.squad.slice(11,16)};
+ $('homeName').textContent=G.homeName;$('awayName').textContent=G.awayName;$('score').textContent='0 - 0';$('clock').textContent='00:00';comment('Kick-off! Find your rhythm.');
+ last=0;animateMatch();
+}
+function comment(t){$('commentary').textContent=t}
+function kick(power){if(!G||G.done)return;let p=G.homePlayers[G.selected],b=G.ball;if(Math.hypot(b.position.x-p.x,b.position.z-p.z)>1.8){comment('Get closer to the ball.');return}let dx=1,dz=0;if(keys[binds.left])dx=-.4;if(keys[binds.up])dz=-.7;if(keys[binds.down])dz=.7;let n=Math.hypot(dx,dz);G.vel.set(dx/n*power,0,dz/n*power);comment(power>20?'He strikes it!':'A short pass.')}
+function pass(){if(!G)return;let p=G.homePlayers[G.selected],b=G.ball;if(Math.hypot(b.position.x-p.x,b.position.z-p.z)>1.8){comment('Get closer to the ball.');return}let mate=G.homePlayers.filter(x=>x!==p).sort((a,b)=>Math.hypot(a.x-b.position.x,a.z-b.position.z)-Math.hypot(b.x-b.position.x,b.z-b.position.z))[0];let v=new THREE.Vector3(mate.x-b.position.x,0,mate.z-b.position.z).normalize();G.vel.copy(v.multiplyScalar(15));comment('Good pass. Keep possession.')}
+function switchP(){if(G)G.selected=(G.selected+1)%G.homePlayers.length}
+function substitute(){if(!G||G.subs>=5||!G.subList.length){comment('No more substitutions available.');return}let incoming=G.subList.shift(),out=G.homePlayers[G.selected];out.mesh.visible=false;let p=makeFootballer('home',out.x,out.z,11+G.subs);p.mesh.scale.setScalar(1.02);G.homePlayers[G.selected]=p;G.players.push(p);G.subs++;comment(incoming.name+' comes on! '+(5-G.subs)+' subs left.')}
+const DEFAULT_BINDS={up:'KeyW',down:'KeyS',left:'KeyA',right:'KeyD',sprint:'ShiftLeft',shoot:'Space',pass:'KeyE',switch:'KeyQ',sub:'KeyC'};
+let binds={...DEFAULT_BINDS};
+try{const saved=JSON.parse(localStorage.getItem('flySoccerBinds')||'{}');binds={...binds,...saved}}catch(e){}
+const bindNames={up:'Move forward',down:'Move backward',left:'Move left',right:'Move right',sprint:'Sprint',shoot:'Shoot',pass:'Pass',switch:'Switch player',sub:'Substitute'};
+let waitingBind=null;
+function keyLabel(code){const names={Space:'SPACE',ShiftLeft:'LEFT SHIFT',ShiftRight:'RIGHT SHIFT',ArrowUp:'↑',ArrowDown:'↓',ArrowLeft:'←',ArrowRight:'→'};return names[code]||code.replace('Key','').replace('Digit','')}
+function drawBinds(){const grid=$('bindGrid');if(!grid)return;grid.innerHTML='';Object.keys(bindNames).forEach(action=>{let row=document.createElement('div');row.className='bindRow';let label=document.createElement('b');label.textContent=bindNames[action];let btn=document.createElement('button');btn.className='alt';btn.textContent=waitingBind===action?'PRESS A KEY':keyLabel(binds[action]);btn.onclick=()=>{waitingBind=action;drawBinds();$('settingsStatus').textContent='Press any key to assign '+bindNames[action]+'.'};row.append(label,btn);grid.append(row)})}
+function saveBinds(){try{localStorage.setItem('flySoccerBinds',JSON.stringify(binds))}catch(e){}}
+function openSettings(){ $('settingsModal').style.display='grid';waitingBind=null;drawBinds();$('settingsStatus').textContent='Keyboard controls are saved on this computer.'}
+function closeSettings(){ $('settingsModal').style.display='none';waitingBind=null}
+$('settingsBtn').onclick=openSettings;$('menuSettingsBtn').onclick=openSettings;$('closeSettings').onclick=closeSettings;
+$('resetBinds').onclick=()=>{binds={...DEFAULT_BINDS};saveBinds();waitingBind=null;drawBinds();$('settingsStatus').textContent='Default controls restored.'};
+$('fullscreenBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
+$('settingsModal').addEventListener('click',e=>{if(e.target===$('settingsModal'))closeSettings()});
+addEventListener('keydown',e=>{
+ if(waitingBind){e.preventDefault();e.stopPropagation();if(e.code==='Escape'){waitingBind=null;drawBinds();$('settingsStatus').textContent='Key assignment cancelled.';return}
+  const duplicate=Object.keys(binds).find(a=>a!==waitingBind&&binds[a]===e.code);
+  if(duplicate){$('settingsStatus').textContent='That key is already assigned to '+bindNames[duplicate]+'.';return}
+  binds[waitingBind]=e.code;waitingBind=null;saveBinds();drawBinds();$('settingsStatus').textContent='Control updated and saved.';return}
+ if($('settingsModal').style.display==='grid'){if(e.code==='Escape')closeSettings();return}
+ if($('match').style.display==='none')return;
+ keys[e.code]=true;
+ if(Object.values(binds).includes(e.code))e.preventDefault();
+ if(e.code===binds.shoot)kick(25);
+ if(e.code===binds.pass)pass();
+ if(e.code===binds.switch)switchP();
+ if(e.code===binds.sub)substitute();
+});
+addEventListener('keyup',e=>keys[e.code]=false);
+$('shoot').onclick=()=>kick(25);$('pass').onclick=pass;$('sub').onclick=substitute;
+function animateMatch(t=0){if(!G||$('match').style.display==='none')return;let dt=Math.min((t-last)/1000,.04)||0;last=t;let p=G.homePlayers[G.selected],b=G.ball;G.clock+=dt;let speed=(keys[binds.sprint]?12:7)*dt;if(keys[binds.up]||keys.ArrowUp&&binds.up==='ArrowUp')p.z-=speed;if(keys[binds.down]||keys.ArrowDown&&binds.down==='ArrowDown')p.z+=speed;if(keys[binds.left]||keys.ArrowLeft&&binds.left==='ArrowLeft')p.x-=speed;if(keys[binds.right]||keys.ArrowRight&&binds.right==='ArrowRight')p.x+=speed;p.x=Math.max(-29,Math.min(29,p.x));p.z=Math.max(-19,Math.min(19,p.z));p.mesh.position.set(p.x,0,p.z);if(Math.hypot(b.position.x-p.x,b.position.z-p.z)<1.25&&G.vel.length()<4){b.position.x=p.x+.8;b.position.z=p.z}
+ for(let q of G.players){if(q.team==='away'){let dx=b.position.x-q.x,dz=b.position.z-q.z,d=Math.hypot(dx,dz);if(d>1.2){q.x+=dx/d*2.8*dt;q.z+=dz/d*2.8*dt;q.mesh.position.set(q.x,0,q.z)}if(d<1.2&&Math.hypot(b.position.x-q.x,b.position.z-q.z)<1.5){G.vel.set(-6,0,(Math.random()-.5)*4);comment('The opposition wins the ball.')}}else if(q!==p){q.mesh.position.x=q.x+Math.sin(G.clock+q.n)*.18}}
+ // Goalkeepers track the ball across their goal line and react to shots.
+ for(let k of G.keepers){let targetZ=Math.max(-3.1,Math.min(3.1,b.position.z*.55));k.z+=(targetZ-k.z)*Math.min(1,dt*3.5);k.mesh.position.z=k.z;k.mesh.position.x=k.team==='home'?(homeSide*-29):(homeSide*29);if(Math.abs(b.position.x-k.mesh.position.x)<2.2&&Math.abs(b.position.z-k.z)<1.25&&G.vel.length()>8){G.vel.x*=-.65;G.vel.z+=(Math.random()-.5)*5;comment('A brilliant save from the goalkeeper!')}}
+ // Procedural football animation: players face their travel direction,
+ // stride smoothly, counter-swing their arms and settle naturally when idle.
+ for(let q of G.players){
+  if(!q.legs)continue;
+  let dx=q.x-q.lastX,dz=q.z-q.lastZ;
+  let moving=Math.hypot(dx,dz)>.012;
+  if(moving)q.mesh.rotation.y=Math.atan2(dx,dz);
+  q.walkPhase+=dt*(moving?13:2.2);
+  let stride=moving?Math.sin(q.walkPhase)*.62:Math.sin(q.walkPhase)*.025;
+  q.legs.forEach((leg,j)=>{leg.rotation.x=stride*(j===0?1:-1)});
+  q.arms?.forEach((arm,j)=>{arm.rotation.x=-stride*(j===0?1:-1)*.72;arm.rotation.z=(j===0?1:-1)*.12+(moving?0:Math.sin(q.walkPhase+j)*.018)});
+  q.mesh.position.y=moving?Math.abs(Math.sin(q.walkPhase*2))*.035:Math.sin(G.clock*2+q.n)*.012;
+  q.lastX=q.x;q.lastZ=q.z;
+ }
+ // Keepers lean and briefly dive toward fast shots, then recover.
+ for(let k of G.keepers){
+  let shotNear=Math.abs(b.position.x-k.mesh.position.x)<5&&Math.abs(b.position.z-k.z)<4&&G.vel.length()>7;
+  let dive=shotNear?Math.sign(b.position.z-k.z)*.42:0;
+  k.mesh.rotation.z+=(dive-k.mesh.rotation.z)*Math.min(1,dt*7);
+ }
+ b.position.addScaledVector(G.vel,dt);G.vel.multiplyScalar(Math.pow(.986,dt*60));if(Math.abs(b.position.z)>20){b.position.z=Math.sign(b.position.z)*20;G.vel.z*=-.6}if(b.position.x>31&&Math.abs(b.position.z)<3.5){G.hs++;scoreGoal(true)}if(b.position.x< -31&&Math.abs(b.position.z)<3.5){G.as++;scoreGoal(false)}if(Math.abs(b.position.x)>32){b.position.x=Math.sign(b.position.x)*30;G.vel.x*=-.7}
+ b.position.y=.4+Math.max(0,Math.sin(G.clock*8))*Math.min(.3,G.vel.length()*.012);G.shadow.position.set(b.position.x,.035,b.position.z);G.camera.position.lerp(new THREE.Vector3(p.x*.25,26,34+p.z*.4),dt*1.5);G.camera.lookAt(p.x*.25,0,p.z*.15);G.renderer.render(G.scene,G.camera);$('score').textContent=G.hs+' - '+G.as;$('clock').textContent=String(Math.floor(G.clock/60)).padStart(2,'0')+':'+String(Math.floor(G.clock%60)).padStart(2,'0');if(G.clock>=150)endGame();else requestAnimationFrame(animateMatch)}
+function scoreGoal(ours){comment(ours?'GOOOOOAL! What a finish!':'They find the net. Reset and respond.');G.ball.position.set(0,.4,0);G.vel.set(0,0,0)}
+function endGame(){if(!G||G.done)return;G.done=true;let h=G.hs,a=G.as,f=S.fixtures[G.fixture];if(!f.home)[h,a]=[a,h];f.done=true;f.score=f.home?`${h}-${a}`:`${a}-${h}`;if(h>a){S.wins++;S.points+=3;S.budget+=4;$('endTitle').textContent='VICTORY';$('endText').textContent='Three points earned. The board will be pleased.'}else if(h===a){S.draws++;S.points++;S.budget+=2;$('endTitle').textContent='DRAW';$('endText').textContent='One point. Find the edge next match.'}else{S.losses++;S.budget+=1;$('endTitle').textContent='DEFEAT';$('endText').textContent='Study the match. Come back stronger.'}S.played++;S.goals+=h;S.squad.forEach(p=>{if(p.contract>0)p.contract--});persist();$('endScore').textContent=G.hs+' - '+G.as;$('matchEnd').style.display='grid'}
+$('leave').onclick=()=>{if(confirm('Leave this match without saving the result?')){$('match').style.display='none';G=null}};
+$('endContinue').onclick=()=>{$('match').style.display='none';G=null;render()};
+addEventListener('resize',()=>{if(G){G.renderer.setSize(innerWidth,innerHeight);G.camera.aspect=innerWidth/innerHeight;G.camera.updateProjectionMatrix()}});
+load();$('clubInput').value=S.club;render();
+
+ // Main menu mode routing.
+ const menu=$('mainMenu'),config=$('setupBox');
+ document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{
+   const mode=btn.dataset.mode;
+   if(mode==='career'){menu.style.display='none';config.style.display='block';return}
+   // Other modes use the same career save and then open their matching game area.
+   if(!S.fixtures.length){S.club=$('clubInput')?.value?.trim()||'Fly FC';fixtures();market();persist();render()}
+   $('setup').style.display='none';
+   if(mode==='kickoff'){let first=S.fixtures.findIndex(f=>!f.done);if(first<0){fixtures();first=0}startMatch(first)}
+   else tab(({cup:'tournaments',squad:'squad',transfers:'transfers',training:'tactics'})[mode]||'home');
+ }));
+ $('backMenu').onclick=()=>{config.style.display='none';menu.style.display='block'};
+})();
+</script>
+</body></html>
